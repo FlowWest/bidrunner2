@@ -108,7 +108,7 @@ class BidRunner:
         if platform.system() == "Windows":
             appdata_env = os.environ.get("LOCALAPPDATA")
         elif platform.system() == "Linux":
-            appdata_env = f'{os.environ.get("HOME")}/.config'
+            appdata_env = f"{os.environ.get('HOME')}/.config"
         local_appdata_path = pathlib.Path(appdata_env, "")
         config_path = local_appdata_path / "bidrunner2"
         config_file = config_path / "config.toml"
@@ -150,7 +150,7 @@ class BidRunner:
             # NOTE: Change to reflect task definition family set by AWS Admin, consider adding to config file
             task_definition_family = "water-tracker-bid-runs"  # water-tracker-bid-runs
             # NOTE: Change to reflect revision set by AWS Admin, consider adding to config file
-            task_definition_revision = "1"
+            task_definition_revision = "4"
             task_definition = f"{task_definition_family}:{task_definition_revision}"
             self.logger.write(
                 f"{log_with_timestamp()} running bid on cluster: {cluster_name}"
@@ -525,7 +525,7 @@ class BidRunnerApp(App):
 
             all_inputs = [
                 bid_name,
-                bid_input_bucket,  # this is auction id
+                bid_name,  # this is auction id
                 bid_auction_shapefile,
                 bid_output_bucket,
             ]
